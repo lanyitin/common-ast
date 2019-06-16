@@ -109,7 +109,7 @@ case class IdentifierExpression(token: Token, holder: ValueHolder)
   def typ:Type = if (holder != null) holder.typ else AnyValue
 }
 
-trait LiteralExpression[T] extends ValueExpression {
+trait LiteralExpression[+T] extends ValueExpression {
   def token: Token
   def value: T
   def visualize =
@@ -125,13 +125,15 @@ case class BooleanLiteralExpression(token: Token, value: Boolean)
   def typ = HBoolean
 }
 
+abstract class NumberLiteralExpression[T] extends LiteralExpression[T]
+
 case class FloatLiteralExpression(token: Token, value: Float)
-    extends LiteralExpression[Float] {
+    extends NumberLiteralExpression[Float] {
   def typ = HFloat
 }
 
 case class IntegerLiteralExpression(token: Token, value: Int)
-    extends LiteralExpression[Int] {
+    extends NumberLiteralExpression[Int] {
   def typ = HInteger
 }
 

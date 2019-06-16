@@ -15,6 +15,10 @@ case class FunctionType(argType: List[Type], typ: Type) extends Type {
   }
   def parent = AnyValue
 }
+case class UnsolveType(name: String) extends Type {
+  override def toString = name
+  def parent = AnyValue  
+}
 case object HBoolean extends Type {
   override def toString = "Boolean"
   def parent = AnyValue
