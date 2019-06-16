@@ -41,16 +41,6 @@ object TokenType extends Enumeration {
   val NotExistToken = Value("")
 }
 
-object Token {
-  var tokenId: Integer = 0
-  def apply(tokenType: TokenType.TokenType,
-            txt: String,
-            line: Integer = 0,
-            col: Integer = 0): Token = {
-    new Token(tokenType, txt, line, col)
-  }
-}
-
 sealed class Token(val tokenType: TokenType.TokenType,
                    val txt: String,
                    val line: Integer = 0,
@@ -63,4 +53,15 @@ sealed class Token(val tokenType: TokenType.TokenType,
     s"${tokenType}('${espedTxt}')"
   }
 }
+
+object Token {
+  var tokenId: Integer = 0
+  def apply(tokenType: TokenType.TokenType,
+            txt: String,
+            line: Integer = 0,
+            col: Integer = 0): Token = {
+    new Token(tokenType, txt, line, col)
+  }
+}
+
 case class NullToken() extends Token(TokenType.NotExistToken, "")
