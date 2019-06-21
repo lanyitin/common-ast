@@ -41,7 +41,7 @@ object TokenType extends Enumeration {
   val NotExistToken = Value("")
 }
 
-sealed class Token(val tokenType: TokenType.TokenType,
+class Token(val tokenType: TokenType.TokenType,
                    val txt: String,
                    val line: Integer = 0,
                    val col: Integer = 0) {
