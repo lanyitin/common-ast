@@ -37,6 +37,8 @@ object TokenType extends Enumeration {
   val BooleanConstantToken = Value("<boolean>")
   val LetToken = Value("let")
   val ModToken = Value("%")
+  val PropertyAccessToken = Value(".")
+  val StringQuoteToken = Value("\"")
 // TODO: is it possible to eliminate NotExistToken?
   val NotExistToken = Value("")
 }
