@@ -185,3 +185,13 @@ case class FunctionCallExpression(declaration: FunctionDeclaration,
       List(parameters: _*).map(a => s"${this.id} -> ${a.id}")).mkString("\n")
   }
 }
+
+abstract class PropertyCallExpression(source: Expression) extends Expression
+case class FieldCallExpression(source: Expression, identiferExpr: IdentifierExpression) extends PropertyCallExpression(source) {
+  def typ = identiferExpr.typ
+  def visualize = source.visualize + "." + identiferExpr.visualize
+}
+case class MethodCallExpression(source: Expression, funcionCallExpr: FunctionCallExpression) extends PropertyCallExpression(source) {
+  def typ = funcionCallExpr.typ
+  def visualize = source.visualize + "." + funcionCallExpr.visualize
+}
