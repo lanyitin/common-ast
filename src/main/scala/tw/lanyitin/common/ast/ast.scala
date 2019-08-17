@@ -125,7 +125,7 @@ case class BooleanLiteralExpression(token: Token, value: Boolean)
   def typ = HBoolean
 }
 
-abstract class NumberLiteralExpression[T] extends LiteralExpression[T]
+abstract class NumberLiteralExpression[+T] extends LiteralExpression[T]
 
 case class FloatLiteralExpression(token: Token, value: Float)
     extends NumberLiteralExpression[Float] {
